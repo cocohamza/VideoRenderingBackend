@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "ywRSB8KFQGLpMUgv3HbMdwecqCy98i0y9WsO9Hfpvzu3sJN0m1RMhiOssziv57zNkwcbEcpZB7kWxPjLYLKc5g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hamza\\Documents\\GitHub\\VideoRenderingBackend\\VideoRenderingBackend\\VideoRenderingBackend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hamza\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Hamza\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\Hamza\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Hamza\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

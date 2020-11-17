@@ -1,0 +1,71 @@
+﻿var mainFolderPath = {0}
+
+var listOfItems=["im01","im02","im03","im04","im05","im06","im07","im08","im09","logo"]
+var listOfTextLayers = ["Text1","Text2","Text3","Text4","Text5","Text6","Text7","Text8","Title9","Intro","Outro"]
+
+var HeadText = {1}
+var TailText = {2}
+var listOfTextTitles = {3}
+var listOfTextDescription= {4}
+var listOfTextOldPrice = {5}
+var listOfTextPrice = {6
+
+for (var i=0 ;i<app.project.items.length;i++)
+{
+    
+    var layerItem = app.project.items[i+1];
+    $.write(layerItem.name+" \n")
+    //TextReplacement
+    var textIndex = listOfTextLayers.indexOf(layerItem.name)
+    if(textIndex>=0){
+            $.write(listOfTextTitles[textIndex]);
+            for(var j=0;j<layerItem.layers.length;j++){
+                var aSubLayer = layerItem.layer(j+1);
+                
+                if( aSubLayer.matchName=="ADBE Text Layer"){
+
+                    var textSourceProperty = aSubLayer.property("Source Text");
+                    
+                     if (aSubLayer.name=="T01"){    
+                        textSourceProperty.setValue(listOfTextTitles[textIndex]);
+                    }
+                    if (aSubLayer.name=="D01"){    
+                        textSourceProperty.setValue(listOfTextDescription[textIndex]);
+                    }
+                    if (aSubLayer.name=="OP01"){    
+                        textSourceProperty.setValue(listOfTextOldPrice[textIndex]);
+                    }
+                    if (aSubLayer.name=="NP01"){    
+                        textSourceProperty.setValue(listOfTextPrice[textIndex]);
+                    }
+                    if (aSubLayer.name=="HeadText"){    
+                        textSourceProperty.setValue(HeadText);
+                    }
+                    if (aSubLayer.name=="TailText"){    
+                        textSourceProperty.setValue(TailText);
+                    }
+                
+                }
+            }
+    }
+    
+    //Image Replacement
+    var layerIndex = listOfItems.indexOf(layerItem.name)
+    if(layerIndex>=0){
+        $.write(listOfItems[layerIndex]+" ");
+        // get the existing image layer
+        var theImageObject = layerItem.layers[1];
+        // import the new image that I'd like to use
+        var  path =  mainFolderPath + "/images/"+listOfItems[layerIndex]+".jpg"
+        var io = new ImportOptions(File(path));
+        // the missing step
+        var newImport = app.project.importFile(io);
+        // replace the existing image with the new one
+        if (theImageObject.source!=null){
+            theImageObject.replaceSource(newImport, true);
+        }else{
+                theImageObject=newImport;
+            }
+    }
+
+}
