@@ -49,13 +49,16 @@ namespace VideoRenderingBackend.Services
 
 
                 string filledHeader = string.Format(scriptHead,
-                        mainPath + afterEffectsProjectExtension,
+                        mainPath,
                         videoImportData.HeadText,
                         videoImportData.TailText,
                         titles,
                         textDescriptions,
                         oldPrices,
-                        newPrices
+                        newPrices,
+                        "",
+                        afterEffectsProjectExtension
+
                     );
 
                 string filledScript = filledHeader + scriptBody;
