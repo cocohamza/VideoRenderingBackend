@@ -25,9 +25,11 @@ namespace VideoRenderingBackend.Services
 
         private string saveLocation = "StoreData/";
         private string inputLocation = "Input/";
+        private string outputLocation = "Output/";
         private string imageFolderLocation = "Images/";
 
         private string scriptName = "autoRenderSctipt.jsx";
+        private string outputFileName = "{0}_{1}"; //storeid_date
 
         private static string aeCommand = "afterfx -r {0}";
 
@@ -46,19 +48,20 @@ namespace VideoRenderingBackend.Services
                 string textDescriptions = JsonConvert.SerializeObject(videoImportData.Descriptions);
                 string oldPrices = JsonConvert.SerializeObject(videoImportData.OldPrices);
                 string newPrices = JsonConvert.SerializeObject(videoImportData.NewPrices);
-
+                outputFileName = string.Format(outputFileName, videoImportData.storeId.ToString(), DateTime.Today.ToString("yyyy-MM-dd"));
 
                 string filledHeader = string.Format(scriptHead,
-                        mainPath,
+                        mainPath +saveLocation + videoImportData.storeId + "/"+inputLocation,
                         videoImportData.HeadText,
                         videoImportData.TailText,
                         titles,
                         textDescriptions,
                         oldPrices,
                         newPrices,
-                        "",
-                        afterEffectsProjectExtension
-
+                        videoImportData.CityText,
+                        afterEffectsProjectExtension,
+                        mainPath + saveLocation + videoImportData.storeId + "/"+ outputLocation,
+                        outputFileName
                     );
 
                 string filledScript = filledHeader + scriptBody;

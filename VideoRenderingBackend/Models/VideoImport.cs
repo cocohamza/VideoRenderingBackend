@@ -12,6 +12,7 @@ namespace VideoRenderingBackend.Models
         public string HeadText { get; set; }
         public string TailText { get; set; }
         public string Path { get; set; }
+        public string CityText { get; set; }
         public List<string> Titles { get; set; }
         public List<string> Descriptions { get; set; }
         public List<string> OldPrices { get; set; }
